@@ -1,23 +1,25 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 
-const clickHandler = () => {
-  console.log("working");
-  Productget();
-}
+export default function Main() {
+  const [products, setProducts] = useState([])
 
-export default class Main extends Component {
+  const clickHandler = () => {
+    // console.log("working");
+    var results = Productget();
+    setProducts(results!)
 
-  render() {
-    return (
-        <>
-          <div className='mainconatiner'>
-            <div>this is the main content</div>
-            <button onClick={clickHandler}>Test</button>
-          </div>
-        </>
-    )
+    console.log("this is setproducts" + setProducts)
   }
+  return (
+    <>
+      <div className='mainconatiner'>
+        <div></div>
+        <div>this is the main content</div>
+        <button onClick={clickHandler}>Test</button>
+      </div>
+    </>
+  )
 }
 
 
