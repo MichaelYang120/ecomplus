@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+.headercontainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282c34;
+  padding: 50px 30px;
+  color: aliceblue;
+}
+
+.footercontainer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282c34;
+  padding: 50px 30px;
+  color: aliceblue;
+}
+
+.mainconatiner {
+  height: 100vh;
+}
