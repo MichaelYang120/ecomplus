@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 
+type TProduct = {
+
+  category : String,
+  description : String,
+  id : Number,
+  image : String,
+  price : Number,
+  rating : { rate: Number, count: Number }
+  title : String
+}
+
+
 export default function Main() {
   const [products, setProducts] = useState([])
+  // const [products, setProducts] = useState<TProduct[]>([])
 
   const clickHandler = () => {
-    // console.log("working");
-    var results = Productget();
-    setProducts(results!)
-
-    console.log("this is setproducts" + setProducts)
+    var product = Productget();
+    console.log((product))
   }
+
   return (
     <>
       <div className='mainconatiner'>
