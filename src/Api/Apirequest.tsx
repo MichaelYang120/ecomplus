@@ -17,6 +17,6 @@ export async function Productget() {
             res => res.json()
             )
         .then(json => (json))
-        return response;
+    return response;
 
 }
