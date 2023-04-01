@@ -6,7 +6,13 @@ export default class Headers extends Component {
       <header>
         <div className='headercontainer'>
           <div>LOGO</div>
-          <div>My Ecom Plus</div>
+          <div>
+            <h1>
+              My Ecom Plus
+
+            </h1>
+            {/* todo: search field */}
+          </div>
           <div>Icons</div>
         </div>
       </header>
