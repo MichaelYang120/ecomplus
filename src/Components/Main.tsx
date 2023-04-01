@@ -46,9 +46,11 @@ export default function Main() {
   }, [])
     return (
     <>
-      <ul {products.map((product) => (
-        <li key={product}></li>
-      ))}></ul>
+        {Object.entries(products).map(([key, subject], id) => (
+          <li className="travelcompany-input" key={id}>
+            <span className="input-label">{subject}</span>
+          </li>
+        ))}
       <div className='mainconatiner'>
         <div></div>
         <div>this is the main content</div>
