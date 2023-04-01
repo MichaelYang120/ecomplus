@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 
-type TProduct = {
+type subject = {
 
   category : String,
   description : String,
@@ -48,7 +48,7 @@ export default function Main() {
     <>
         {Object.entries(products).map(([key, subject], id) => (
           <li className="travelcompany-input" key={id}>
-            <span className="input-label">{subject}</span>
+            <span className="input-label">{key}</span>
           </li>
         ))}
       <div className='mainconatiner'>
