@@ -12,8 +12,6 @@ type subject = {
   title : String
 }
 
-
-
 export default function Main() {
 
   const [products, setProducts] = useState([])
@@ -26,12 +24,33 @@ export default function Main() {
     }
     test()
   }, [])
+
+
     return (
     <>
-        {products.map(({id, title}: any) => <li key={id}>{title}</li>)}
       <div className='mainconatiner'>
-        <div></div>
-        <div>this is the main content test</div>
+          {/* <div>{products.map(({ id, title, description, image }) =>
+            <li key={id}>{title}{description}{image}</li>)}
+            </div> */}
+
+            {products.map(({ id, title, description, image, price }) => 
+              <div className="productcontainer" key={id}>
+                <div className='productinnercontainer'>
+                  <label className='productname'>{title}</label>
+                  <p className='productdesc'>{description}</p>
+                  <p className='productprice'>{price}</p>
+                  <div className='buttoncontainer'>
+                    <button className='shopbtn'>Add To Cart</button>
+                    <button className='shopbtn'>Buy Now</button>
+                  </div>
+                </div>
+                <img className='productimage' src={image} alt=""/>
+              </div>
+              
+            
+            )}
+
+        {/* <div>this is the main content test</div> */}
       </div>
     </>
   )
