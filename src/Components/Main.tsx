@@ -5,21 +5,31 @@ export default function Main() {
   // debug
   var debug = true;
 
-  type PArray = [
-    name: string,
-    price: string
-  ]
+  // type PArray = [
+  //   name: string,
+  //   price: string
+  // ]
+
+  interface PArray {
+    name: String,
+    price: String,
+    image: string
+  }
 
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
-  const [productname, setProductName] = useState([])
-  const [productprice, setProductPrice] = useState([])
   const [productarray, setProductarray] = useState<PArray[]>([])
+  const [cartarray, setCartarray] = useState<PArray[]>([])
+  const [cartpopup, setCartpopup] = useState(false);
+  
   
   // click events
   const buyhandler = (event:any) => {
     var targetname = event.target.title;
     var targetprice = event.target.value;
+    var targetimgurl = event.target.getAttribute("data-img");
+    console.log(event + "event")
+    console.log(targetimgurl + "dataimg")
     console.log(targetname + " $" + targetprice)
 
   }
@@ -32,15 +42,15 @@ export default function Main() {
     // event.preventDefault();
     var targetname = event.target.title;
     var targetprice = event.target.value;
-    setProductName(targetname)
-    setProductPrice(targetprice)
+    var targetimgurl = event.target.getAttribute("data-img");
     if (debug === true) {
-
-      console.log(productprice)
+      console.log("target image" + targetimgurl)
+      console.log("event" + event.target)
     }
     var newproductarray:any = {
       "name" : targetname,
       "price" : targetprice,
+      "image" : targetimgurl
     }
     if (debug === true ) {
 
@@ -48,14 +58,23 @@ export default function Main() {
     }
     var tmparray = newproductarray;
     setProductarray(productarray => [...productarray, ...[newproductarray]])
-    console.log(productarray.concat([tmparray]))
+    if (debug === true) {
+      console.log(productarray.concat([tmparray]))
+
+    }
+    var resultarray = productarray.concat([tmparray])
     incrementcart()
+    setCartarray(resultarray)
   }
 
   const headercarthandler = (event:any) => {
-    console.log("cart btn: " + productarray)
-    console.log(event)
-    
+    if (debug === true) {
+      // console.log("cart btn: " + productarray)
+      console.log(cartarray)
+    }
+    var mycart:any = {"mycart":cartarray};
+    console.log(mycart)
+    setCartpopup(true);
   }
 
   useEffect(() => {
@@ -66,12 +85,26 @@ export default function Main() {
     getproducts()
   }, [])
 
+  function showcartpopup() {
+    return (
+      cartarray.map(({name, price, image}) => 
+        <div className="cartpopupcontainer">
+          <div className='cartpopupname'>{name}</div>
+          <div className='cartpopupprice'>{price}</div>
+          <div className='cartpopupprice'>{image}</div>
+        </div>
+      )
+    )
+  }
 
     return (
     <>
       <div className='mainconatiner'>
         <div className="cartcontainer">
           <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}</div>
+            {cartpopup && showcartpopup()}
+            <div className={'cartpopup'}>
+            </div>
           <div className='headercheckout'>
             <a className='headercheckouttext' href='/'>Checkout</a>
           </div>
@@ -85,8 +118,8 @@ export default function Main() {
                 ${Number.isInteger(price) ? price + ".00" : price}
               </p>
               <div className='buttoncontainer'>
-                <button className='shopbtn' onClick={buyhandler} title={title} value={price}>Buy Now</button>
-                <button className='shopbtn' onClick={addtocarthandler} title={title} value={price}>Add To Cart</button>
+                <button className='shopbtn' onClick={buyhandler} title={title} value={price} data-img={image}>Buy Now</button>
+                <button className='shopbtn' onClick={addtocarthandler} title={title} value={price} data-img={image}>Add To Cart</button>
               </div>
             </div>
             <img className='productimage' src={image} alt=""/>
@@ -96,3 +129,5 @@ export default function Main() {
     </>
   )
 }
+
+// todo add a functional arrow to auto scroll to top of page
