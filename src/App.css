@@ -111,14 +111,32 @@
 .cartcontainer {
   position: sticky;
   top: 0;
+  background-color: #282c34;
+  display: flex;
 
 }
 
 .cart{
   padding: 10px 15px;
-  background-color: #282c34;
   color: aliceblue;
   font-weight: 600;
   border: none;
-  text-align: right;
+  margin: auto 0 auto auto;
+}
+.cart:hover{
+  cursor: pointer;
+}
+
+.headercheckout {
+  padding: 10px 15px;
+}
+
+.headercheckouttext {
+  color: aliceblue;
+  font-weight: 600;
+  text-decoration: none;
+  border-color: aliceblue ;
+  border-radius: 10px solid;
+  padding: 10px;
+  
 }
