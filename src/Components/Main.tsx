@@ -5,11 +5,6 @@ export default function Main() {
   // debug
   var debug = true;
 
-  // type PArray = [
-  //   name: string,
-  //   price: string
-  // ]
-
   interface PArray {
     name: String,
     price: String,
@@ -39,7 +34,6 @@ export default function Main() {
   }
 
   const addtocarthandler = (event:any) => {
-    // event.preventDefault();
     var targetname = event.target.title;
     var targetprice = event.target.value;
     var targetimgurl = event.target.getAttribute("data-img");
