@@ -22,7 +22,9 @@ export default function Main() {
             <div className='productinnercontainer'>
               <h2 className='productname'>{title}</h2>
               <p className='productdesc'>{description}</p>
-              <p className='productprice'>${price}</p>
+              <p className='productprice'>${
+                Number.isInteger(price) ? price + ".00" : price
+              }</p>
               <div className='buttoncontainer'>
                 <button className='shopbtn'>Buy Now</button>
                 <button className='shopbtn'>Add To Cart</button>
