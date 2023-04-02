@@ -5,7 +5,7 @@ export default class Headers extends Component {
     return (
       <header>
         <div className='headercontainer'>
-          <div>LOGO</div>
+          <div className='logo'>LOGO</div>
           <div>
             <h1>
               My Ecom Plus
@@ -13,7 +13,9 @@ export default class Headers extends Component {
             </h1>
             {/* todo: search field */}
           </div>
-          <div>Icons</div>
+          <div className='iconscontainer' id='iconscontainer'>
+            Icons
+          </div>
         </div>
       </header>
     )
