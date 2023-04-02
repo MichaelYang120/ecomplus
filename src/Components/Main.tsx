@@ -1,48 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 
-
-interface valueinterface {
-  category?: String;
-  description?: String;
-  id?: Number;
-  image?: String;
-  price?: Number;
-  rating?: { rate: Number, count: Number };
-  title?: String;
-}
-
-type valuetype = {
-  category?: String;
-  description?: String;
-  id?: Number;
-  image?: String;
-  price?: Number;
-  rating?: { rate: Number, count: Number };
-  title?: String;
-}
-
-
-var Value: valueinterface = {};
-
 export default function Main() {
 
   const [products, setProducts] = useState([])
 
-  // type value = any | unknown;
-
   useEffect(() => {
     async function getproducts() {
       var product = await Productget();
-      (Object.keys(product) as (keyof typeof product)[]).forEach((key, index) => {
-        var productprice = product[key].price;
-        console.log(productprice + "0")
-        // var newproductprice = RegExp(/^\d+(,\d{1,2})?$/)
-        // var regex = /^\d+(,\d{1,2})?$/
-        // console.log(regex(productprice))
-        var newprice = productprice + "0"
-      });
-
       setProducts(product)
     }
     getproducts()
@@ -70,5 +35,3 @@ export default function Main() {
     </>
   )
 }
-
-
