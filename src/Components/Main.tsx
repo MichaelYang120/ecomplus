@@ -9,7 +9,6 @@ export default function Main() {
     name: string,
     price: string
   ]
-  
 
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
@@ -35,14 +34,14 @@ export default function Main() {
     var targetprice = event.target.value;
     setProductName(targetname)
     setProductPrice(targetprice)
-    if (debug == true) {
+    if (debug === true) {
 
       console.log(productprice)
     }
-    var newproductarray:PArray = [
-      targetname,
-      targetprice,
-    ]
+    var newproductarray:any = {
+      "name" : targetname,
+      "price" : targetprice,
+    }
     if (debug === true ) {
 
       console.log(newproductarray)
