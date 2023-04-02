@@ -3,7 +3,22 @@ import { Productget } from '../Api/Apirequest';
 
 export default function Main() {
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  
+  // click events
+  const buyhandler = (event:any) => {
+    var targetname = event.target.title;
+    var targetprice = event.target.value;
+    console.log(targetname + " $" + targetprice)
+
+  }
+  
+  const addtocarthandler = (event:any) => {
+    var targetname = event.target.title;
+    var targetprice = event.target.value;
+    console.log(targetname + " $" + targetprice)
+
+  }
 
   useEffect(() => {
     async function getproducts() {
@@ -22,12 +37,12 @@ export default function Main() {
             <div className='productinnercontainer'>
               <h2 className='productname'>{title}</h2>
               <p className='productdesc'>{description}</p>
-              <p className='productprice'>${
-                Number.isInteger(price) ? price + ".00" : price
-              }</p>
+              <p className='productprice'>
+                ${Number.isInteger(price) ? price + ".00" : price}
+              </p>
               <div className='buttoncontainer'>
-                <button className='shopbtn'>Buy Now</button>
-                <button className='shopbtn'>Add To Cart</button>
+                <button className='shopbtn' onClick={buyhandler} title={title} value={price}>Buy Now</button>
+                <button className='shopbtn' onClick={addtocarthandler} title={title} value={price}>Add To Cart</button>
               </div>
             </div>
             <img className='productimage' src={image} alt=""/>

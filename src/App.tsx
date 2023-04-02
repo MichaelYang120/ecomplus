@@ -4,15 +4,18 @@ import Footer from './Components/Footer';
 import Headers from './Components/Headers';
 import Main from './Components/Main';
 import Settings from './Components/Settings';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <Router>
       <Headers />
-      <Main />
-      {/* <Settings /> */}
+      <Routes>
+        <Route path="/" element={<Main />}/>
+        <Route path="/adminsetting" element={<Settings />}/>
+      </Routes>
       <Footer />
-    </>
+    </Router>
   );
 }
 
