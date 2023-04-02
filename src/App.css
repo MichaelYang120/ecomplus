@@ -140,3 +140,42 @@
   padding: 10px;
   
 }
+
+.cartpopupcontainer {
+  background-color: #61dafb;
+  height: 70%;
+  position: fixed;
+  right: 0;
+  margin: 10px;
+  top: 15;
+  z-index: 1;
+  overflow: auto;
+
+
+}
+
+.cartpopupproductcontainer {
+  display: flex;
+  position: relative;
+  max-height: 500%;
+  /* justify-content: space-between; */
+
+}
+
+.cartpopupname {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background-color: aquamarine;
+  max-width: 30%;
+}
+
+.cartpopupprice {
+  color: bisque;
+}
+
+.cartpopupimage {
+  max-width: 150px;
+  object-fit: fill;
+  max-height: 200px;
+  margin: auto;
+
+}
