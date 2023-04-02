@@ -4,7 +4,7 @@ import { Productget } from '../Api/Apirequest';
 export default function Main() {
 
   const [products, setProducts] = useState([]);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   
   // click events
   const buyhandler = (event:any) => {
@@ -14,13 +14,8 @@ export default function Main() {
 
   }
 
-  function test() {
-    var iconscontainer = document.getElementById("iconscontainer");
+  function incrementcart() {
     setCount(count + 1)
-    console.log(count)
-    var iconscontainertext = iconscontainer?.textContent
-    iconscontainertext = iconscontainertext + " testing"
-    console.log(iconscontainertext)
   }
 
   const addtocarthandler = (event:any) => {
@@ -28,8 +23,7 @@ export default function Main() {
     var targetname = event.target.title;
     var targetprice = event.target.value;
     console.log(targetname + " $" + targetprice);
-    test()
-
+    incrementcart()
   }
 
   useEffect(() => {
@@ -38,14 +32,15 @@ export default function Main() {
       setProducts(product)
     }
     getproducts()
-
-    
   }, [])
 
 
     return (
     <>
       <div className='mainconatiner'>
+        <div className="cartcontainer">
+          <div className='cart'>Items in My Cart: {count}</div>
+        </div>
         {products.map(({ id, title, description, image, price }) => 
           <div className="productcontainer" key={id}>
             <div className='productinnercontainer'>

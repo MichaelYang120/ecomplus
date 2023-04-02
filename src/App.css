@@ -107,3 +107,18 @@
   cursor: pointer;
   color: rgb(196, 199, 197);
 }
+
+.cartcontainer {
+  position: sticky;
+  top: 0;
+
+}
+
+.cart{
+  padding: 10px 15px;
+  background-color: #282c34;
+  color: aliceblue;
+  font-weight: 600;
+  border: none;
+  text-align: right;
+}
