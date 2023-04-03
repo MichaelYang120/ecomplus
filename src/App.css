@@ -155,7 +155,7 @@
 }
 
 .cartpopupproductcontainer {
-  display: flex;
+  display: block;
   position: relative;
   max-height: 500%;
   /* justify-content: space-between; */
