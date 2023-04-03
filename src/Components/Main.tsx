@@ -87,13 +87,12 @@ export default function Main() {
   function showcartpopup() {
     return (
       cartarray.map(({ name, price, image }) =>
-      <div className="cartpopupcontainer">
-          {/* <button onClick={closepopup}>close</button> */}
-          <div className="cartpopupproductcontainer">
+        <div className="cartpopupproductcontainer">
+          <div className="cartpopupcontainertags">
             <div className='cartpopupname'>{name}</div>
             <div className='cartpopupprice'>{price}</div>
-            <img className='cartpopupimage' src={image} />
           </div>
+          <img className='cartpopupimage' src={image} />
         </div>
       )
     )
@@ -102,7 +101,12 @@ export default function Main() {
   return (
     <>
       <div className='mainconatiner'>
-        {cartpopup && showcartpopup()}
+        {cartpopup == true ? 
+        <div className='cartpopupcontainer'>
+          {cartpopup && showcartpopup()}
+        </div>
+        : ""}
+
         <div className="cartcontainer">
           <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}
 
