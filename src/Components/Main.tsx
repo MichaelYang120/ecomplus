@@ -21,6 +21,7 @@ export default function Main() {
   const [productarray, setProductarray] = useState<PArray[]>([])
   const [cartarray, setCartarray] = useState<PArray[]>([])
   const [cartpopup, setCartpopup] = useState(false);
+  const [totalcart, setTotalcart] = useState("")
 
 
   // click events
@@ -34,7 +35,7 @@ export default function Main() {
       // console.log(targetname + " $" + targetprice)
 
     }
-    console.log(totalcart() + "total")
+    console.log(totalcartvalue() + "total")
 
   }
 
@@ -112,19 +113,22 @@ export default function Main() {
     )
   }
 
-  function totalcart () {
+  function totalcartvalue () {
     var cartname = document.querySelectorAll('.cartpopupname')
+
+    let total = 0
     cartname.forEach(element => {
       var elementprice = element.getAttribute("data-price")
-      if (cartname.length > 1) {
-        if(elementprice != null) {
-          var newelementprice = Number(elementprice)
-          var currentprice = Number(elementprice)
-          var total = currentprice++ + newelementprice
-          console.log(total)
-        }
-
+      var newelementprice = (Number(elementprice))
+      total += newelementprice
+      
+      var newtotal = total.toString()
+      if(debug == true) {
+        console.log(newtotal)
+        
       }
+      setTotalcart(newtotal);
+
     });
   }
 
@@ -134,8 +138,10 @@ export default function Main() {
         {cartpopup == true ? 
         <div className='cartpopupcontainer'>
           <button className='cartpopupbtn' onClick={closepopup}>X</button>
+          {/* todo add style to cartprice and add functionality */}
+          <div className='totalcartprice'>{totalcart}</div>
           {cartpopup && showcartpopup()}
-        </div>
+        </div> 
         : ""}
 
         <div className="cartcontainer">
