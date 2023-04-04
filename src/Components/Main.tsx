@@ -90,7 +90,7 @@ export default function Main() {
         <div className="cartpopupproductcontainer">
           <div className="cartpopupcontainertags">
             <div className='cartpopupname'>{name}</div>
-            <div className='cartpopupprice'>{price}</div>
+            <div className='cartpopupprice'>${Number.isInteger(price) ? price + ".00" : price}</div>
           </div>
           <img className='cartpopupimage' src={image} />
         </div>
@@ -103,6 +103,7 @@ export default function Main() {
       <div className='mainconatiner'>
         {cartpopup == true ? 
         <div className='cartpopupcontainer'>
+          <button className='cartpopupbtn' onClick={closepopup}>X</button>
           {cartpopup && showcartpopup()}
         </div>
         : ""}

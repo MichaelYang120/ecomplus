@@ -151,39 +151,41 @@
   top: 15;
   z-index: 1;
   overflow: scroll;
-  border-radius: 10px;
-  border: #282c34 solid 1px;  
+  border-radius: 15px;
+  border: grey solid 3px;  
 }
 
 .cartpopupproductcontainer {
   display: flex;
-  /* flex-direction: column; */
-  padding: 10px 40px;
+  padding: 30px 40px;
   justify-content: space-between;
-  /* margin: 0 auto 0; */
-  /* max-height: 500%; */
 
 }
 
 .cartpopupname {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: aquamarine;
-  /* max-width: 30%; */
+  font-weight: 600;
+  font-size: 18px;
 }
 
 .cartpopupprice {
-  /* color: bisque; */
+  margin: 10px 0;
 }
 
 .cartpopupimage {
   max-width: 150px;
   object-fit: fill;
   max-height: 200px;
-  /* margin: auto; */
 
 }
-/* 
-          <div className="cartpopupproductcontainer">
-            <div className='cartpopupname'>{name}</div>
-            <div className='cartpopupprice'>{price}</div>
-            <img className='cartpopupimage' src={image} /> */
+
+.cartpopupbtn {
+  margin: 10px;
+  position: fixed;
+  float: right;
+  background-color: #282c34;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+
+}
