@@ -23,9 +23,13 @@ export default function Main() {
     var targetname = event.target.title;
     var targetprice = event.target.value;
     var targetimgurl = event.target.getAttribute("data-img");
-    console.log(event + "event")
-    console.log(targetimgurl + "dataimg")
-    console.log(targetname + " $" + targetprice)
+    if (debug == true ) {
+      console.log(event + "event")
+      console.log(targetimgurl + "dataimg")
+      console.log(targetname + " $" + targetprice)
+
+    }
+    console.log(totalcart() + "total")
 
   }
 
@@ -66,9 +70,14 @@ export default function Main() {
       // console.log("cart btn: " + productarray)
       console.log(cartarray)
     }
-    var mycart: any = { "mycart": cartarray };
-    console.log(mycart)
-    setCartpopup(true);
+    if(cartarray.length == 0) {
+      alert("please make a selection")
+    } else {
+      var mycart: any = { "mycart": cartarray };
+      console.log(mycart)
+      setCartpopup(true);
+
+    }
   }
 
   const closepopup = () => {
@@ -96,6 +105,21 @@ export default function Main() {
         </div>
       )
     )
+  }
+
+  function totalcart () {
+    Object.values(cartarray).forEach(values => {
+      var totalprice = values.price
+      var newtotalprice = Number(totalprice)
+
+      console.log(newtotalprice)
+      if(cartarray.length > 1) {
+        var priceresults = newtotalprice + newtotalprice
+        console.log(priceresults)
+      }
+    });
+
+
   }
 
   return (
