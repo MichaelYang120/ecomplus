@@ -11,6 +11,11 @@ export default function Main() {
     image: string
   }
 
+  type PriceArg = [
+    number
+  ]
+
+
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
   const [productarray, setProductarray] = useState<PArray[]>([])
@@ -24,9 +29,9 @@ export default function Main() {
     var targetprice = event.target.value;
     var targetimgurl = event.target.getAttribute("data-img");
     if (debug == true ) {
-      console.log(event + "event")
-      console.log(targetimgurl + "dataimg")
-      console.log(targetname + " $" + targetprice)
+      // console.log(event + "event")
+      // console.log(targetimgurl + "dataimg")
+      // console.log(targetname + " $" + targetprice)
 
     }
     console.log(totalcart() + "total")
@@ -98,7 +103,7 @@ export default function Main() {
       cartarray.map(({ name, price, image }) =>
         <div className="cartpopupproductcontainer">
           <div className="cartpopupcontainertags">
-            <div className='cartpopupname'>{name}</div>
+            <div className='cartpopupname' data-price={price}>{name}</div>
             <div className='cartpopupprice'>${Number.isInteger(price) ? price + ".00" : price}</div>
           </div>
           <img className='cartpopupimage' src={image} />
@@ -108,18 +113,19 @@ export default function Main() {
   }
 
   function totalcart () {
-    Object.values(cartarray).forEach(values => {
-      var totalprice = values.price
-      var newtotalprice = Number(totalprice)
+    var cartname = document.querySelectorAll('.cartpopupname')
+    cartname.forEach(element => {
+      var elementprice = element.getAttribute("data-price")
+      if (cartname.length > 1) {
+        if(elementprice != null) {
+          var newelementprice = Number(elementprice)
+          var currentprice = Number(elementprice)
+          var total = currentprice++ + newelementprice
+          console.log(total)
+        }
 
-      console.log(newtotalprice)
-      if(cartarray.length > 1) {
-        var priceresults = newtotalprice + newtotalprice
-        console.log(priceresults)
       }
     });
-
-
   }
 
   return (
