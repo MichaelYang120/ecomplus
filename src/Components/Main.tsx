@@ -35,7 +35,9 @@ export default function Main() {
       // console.log(targetname + " $" + targetprice)
 
     }
-    console.log(totalcartvalue() + "total")
+    // console.log(totalcartvalue() + "total")
+    // console.log(totalcart)
+    // console.log(typeof(totalcart))
 
   }
 
@@ -69,6 +71,7 @@ export default function Main() {
     var resultarray = productarray.concat([tmparray])
     incrementcart()
     setCartarray(resultarray)
+    totalcartvalue()
   }
 
   const headercarthandler = (event: any) => {
@@ -139,7 +142,7 @@ export default function Main() {
         <div className='cartpopupcontainer'>
           <button className='cartpopupbtn' onClick={closepopup}>X</button>
           {/* todo add style to cartprice and add functionality */}
-          <div className='totalcartprice'>{totalcart}</div>
+          <div className='totalcartprice'>Total Price: ${totalcart}</div>
           {cartpopup && showcartpopup()}
         </div> 
         : ""}
