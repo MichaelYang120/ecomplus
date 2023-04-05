@@ -11,7 +11,7 @@ export default function Main() {
     image: string
   }
 
-  // type PriceArg = [
+  // type  = [
   //   number
   // ]
 
@@ -26,10 +26,10 @@ export default function Main() {
 
   // click events
   const buyhandler = (event: any) => {
-    var targetname = event.target.title;
-    var targetprice = event.target.value;
-    var targetimgurl = event.target.getAttribute("data-img");
-    if (debug == true ) {
+    // var targetname = event.target.title;
+    // var targetprice = event.target.value;
+    // var targetimgurl = event.target.getAttribute("data-img");
+    if (debug === true ) {
       // console.log(event + "event")
       // console.log(targetimgurl + "dataimg")
       // console.log(targetname + " $" + targetprice)
@@ -79,7 +79,7 @@ export default function Main() {
       // console.log("cart btn: " + productarray)
       console.log(cartarray)
     }
-    if(cartarray.length == 0) {
+    if(cartarray.length === 0) {
       alert("please make a selection")
     } else {
       var mycart: any = { "mycart": cartarray };
@@ -110,7 +110,7 @@ export default function Main() {
             <div className='cartpopupname' data-price={price}>{name}</div>
             <div className='cartpopupprice'>${Number.isInteger(price) ? price + ".00" : price}</div>
           </div>
-          <img className='cartpopupimage' src={image} />
+          <img className='cartpopupimage' src={image} alt="cartpopupimage"/>
         </div>
       )
     )
@@ -130,12 +130,12 @@ export default function Main() {
       
       var addnewtotal = total + Number(targetprice);
       var newtotal = addnewtotal.toFixed(2)
-      if(debug == true) {
+      if(debug === true) {
         console.log(newtotal)
         
       }
       setTotalcart(newtotal);
-      if(debug == true) {
+      if(debug === true) {
         console.log(totalcart)
 
       }
@@ -145,7 +145,7 @@ export default function Main() {
   return (
     <>
       <div className='mainconatiner'>
-        {cartpopup == true ? 
+        {cartpopup === true ? 
         <div className='cartpopupcontainer'>
           <button className='cartpopupbtn' onClick={closepopup}>X</button>
           {/* todo add style to cartprice and add functionality */}
