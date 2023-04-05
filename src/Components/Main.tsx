@@ -11,9 +11,9 @@ export default function Main() {
     image: string
   }
 
-  type PriceArg = [
-    number
-  ]
+  // type PriceArg = [
+  //   number
+  // ]
 
 
   const [products, setProducts] = useState([]);
@@ -33,11 +33,11 @@ export default function Main() {
       // console.log(event + "event")
       // console.log(targetimgurl + "dataimg")
       // console.log(targetname + " $" + targetprice)
+      // console.log(totalcartvalue() + "total")
+      // console.log(totalcart)
+      // console.log(typeof(totalcart))
 
     }
-    // console.log(totalcartvalue() + "total")
-    // console.log(totalcart)
-    // console.log(typeof(totalcart))
 
   }
 
@@ -71,7 +71,7 @@ export default function Main() {
     var resultarray = productarray.concat([tmparray])
     incrementcart()
     setCartarray(resultarray)
-    totalcartvalue()
+    totalcartvalue(targetprice)
   }
 
   const headercarthandler = (event: any) => {
@@ -116,22 +116,29 @@ export default function Main() {
     )
   }
 
-  function totalcartvalue () {
+  function totalcartvalue (targetprice:any) {
     var cartname = document.querySelectorAll('.cartpopupname')
 
     let total = 0
+    if(cartname.length < 1) {
+      setTotalcart(targetprice)
+    }
     cartname.forEach(element => {
       var elementprice = element.getAttribute("data-price")
       var newelementprice = (Number(elementprice))
       total += newelementprice
       
-      var newtotal = total.toString()
+      var addnewtotal = total + Number(targetprice);
+      var newtotal = addnewtotal.toFixed(2)
       if(debug == true) {
         console.log(newtotal)
         
       }
       setTotalcart(newtotal);
+      if(debug == true) {
+        console.log(totalcart)
 
+      }
     });
   }
 
