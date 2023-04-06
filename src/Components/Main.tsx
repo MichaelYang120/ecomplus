@@ -44,6 +44,7 @@ export default function Main() {
   function incrementcart() {
     setCount(count + 1)
   }
+  var price:number
 
   const addtocarthandler = (event: any) => {
     var targetname = event.target.title;
@@ -70,8 +71,11 @@ export default function Main() {
     }
     var resultarray = productarray.concat([tmparray])
     incrementcart()
+
     setCartarray(resultarray)
     totalcartvalue(targetprice)
+    console.log(targetprice)
+
   }
 
   const headercarthandler = (event: any) => {
@@ -91,16 +95,9 @@ export default function Main() {
 
   const closepopup = () => {
     setCartpopup(false);
+    setTotalcart(totalcart)
 
   }
-
-  useEffect(() => {
-    async function getproducts() {
-      var product = await Productget();
-      setProducts(product)
-    }
-    getproducts()
-  }, [])
 
   function showcartpopup() {
     return (
@@ -141,6 +138,14 @@ export default function Main() {
       }
     });
   }
+
+  useEffect(() => {
+    async function getproducts() {
+      var product = await Productget();
+      setProducts(product)
+    }
+    getproducts()
+  }, [])
 
   return (
     <>
