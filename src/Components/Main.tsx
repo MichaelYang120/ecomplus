@@ -45,8 +45,6 @@ export default function Main() {
     setCount(count + 1)
   }
 
-  var price:number
-
   const addtocarthandler = (event: any) => {
     var targetname = event.target.title;
     var targetprice = event.target.value;
