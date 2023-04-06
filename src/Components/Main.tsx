@@ -6,8 +6,8 @@ export default function Main() {
   var debug = true;
 
   interface PArray {
-    name: String,
-    price: String,
+    name: string,
+    price: string,
     image: string
   }
 
@@ -44,6 +44,7 @@ export default function Main() {
   function incrementcart() {
     setCount(count + 1)
   }
+
   var price:number
 
   const addtocarthandler = (event: any) => {
@@ -53,6 +54,7 @@ export default function Main() {
     if (debug === true) {
       console.log("target image" + targetimgurl)
       console.log("event" + event.target)
+      console.log(`event ${event}`)
     }
     var newproductarray: any = {
       "name": targetname,
@@ -73,8 +75,20 @@ export default function Main() {
     incrementcart()
 
     setCartarray(resultarray)
-    totalcartvalue(targetprice)
+    console.log(resultarray)
     console.log(targetprice)
+
+
+    var total = 0;
+    resultarray.forEach((value:PArray) => {
+      var price = value.price
+      var pricetonumber = Number(price)
+
+      total += pricetonumber;
+      var fixtotal = total.toFixed(2)
+      setTotalcart(fixtotal)
+
+    })
 
   }
 
@@ -95,7 +109,6 @@ export default function Main() {
 
   const closepopup = () => {
     setCartpopup(false);
-    setTotalcart(totalcart)
 
   }
 
@@ -111,32 +124,6 @@ export default function Main() {
         </div>
       )
     )
-  }
-
-  function totalcartvalue (targetprice:any) {
-    var cartname = document.querySelectorAll('.cartpopupname')
-
-    let total = 0
-    if(cartname.length < 1) {
-      setTotalcart(targetprice)
-    }
-    cartname.forEach(element => {
-      var elementprice = element.getAttribute("data-price")
-      var newelementprice = (Number(elementprice))
-      total += newelementprice
-      
-      var addnewtotal = total + Number(targetprice);
-      var newtotal = addnewtotal.toFixed(2)
-      if(debug === true) {
-        console.log(newtotal)
-        
-      }
-      setTotalcart(newtotal);
-      if(debug === true) {
-        console.log(totalcart)
-
-      }
-    });
   }
 
   useEffect(() => {
