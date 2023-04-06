@@ -11,11 +11,6 @@ export default function Main() {
     image: string
   }
 
-  // type  = [
-  //   number
-  // ]
-
-
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
   const [productarray, setProductarray] = useState<PArray[]>([])
@@ -29,7 +24,7 @@ export default function Main() {
     // var targetname = event.target.title;
     // var targetprice = event.target.value;
     // var targetimgurl = event.target.getAttribute("data-img");
-    if (debug === true ) {
+    if (debug === true) {
       // console.log(event + "event")
       // console.log(targetimgurl + "dataimg")
       // console.log(targetname + " $" + targetprice)
@@ -73,17 +68,22 @@ export default function Main() {
     incrementcart()
 
     setCartarray(resultarray)
-    console.log(resultarray)
-    console.log(targetprice)
+    if (debug === true) {
+      console.log(resultarray)
+      console.log(targetprice)
 
+    }
 
+    // this is below is for the cart price and summing up the total price 
     var total = 0;
-    resultarray.forEach((value:PArray) => {
+    resultarray.forEach((value: PArray) => {
       var price = value.price
       var pricetonumber = Number(price)
-
+      // this is where we sum up the total
       total += pricetonumber;
+      // price is set to fix number of decimals
       var fixtotal = total.toFixed(2)
+      // this is where we set our state variable
       setTotalcart(fixtotal)
 
     })
@@ -95,7 +95,7 @@ export default function Main() {
       // console.log("cart btn: " + productarray)
       console.log(cartarray)
     }
-    if(cartarray.length === 0) {
+    if (cartarray.length === 0) {
       alert("please make a selection")
     } else {
       var mycart: any = { "mycart": cartarray };
@@ -118,7 +118,7 @@ export default function Main() {
             <div className='cartpopupname' data-price={price}>{name}</div>
             <div className='cartpopupprice'>${Number.isInteger(price) ? price + ".00" : price}</div>
           </div>
-          <img className='cartpopupimage' src={image} alt="cartpopupimage"/>
+          <img className='cartpopupimage' src={image} alt="cartpopupimage" />
         </div>
       )
     )
@@ -135,14 +135,13 @@ export default function Main() {
   return (
     <>
       <div className='mainconatiner'>
-        {cartpopup === true ? 
-        <div className='cartpopupcontainer'>
-          <button className='cartpopupbtn' onClick={closepopup}>X</button>
-          {/* todo add style to cartprice and add functionality */}
-          <div className='totalcartprice'>Total Price: ${totalcart}</div>
-          {cartpopup && showcartpopup()}
-        </div> 
-        : ""}
+        {cartpopup === true ?
+          <div className='cartpopupcontainer'>
+            <button className='cartpopupbtn' onClick={closepopup}>X</button>
+            <div className='totalcartprice'>Total Price: ${totalcart}</div>
+            {cartpopup && showcartpopup()}
+          </div>
+          : ""}
 
         <div className="cartcontainer">
           <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}
@@ -174,3 +173,4 @@ export default function Main() {
 }
 
 // todo add a functional arrow to auto scroll to top of page
+// todo add clear all items, can this be implemented by reseting the state to zero?
