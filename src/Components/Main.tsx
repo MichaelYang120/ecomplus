@@ -101,12 +101,21 @@ export default function Main() {
       var mycart: any = { "mycart": cartarray };
       console.log(mycart)
       setCartpopup(true);
-
+    
     }
   }
 
   const closepopup = () => {
     setCartpopup(false);
+
+  }
+  // this is to clear the cart
+  const clearcart = () => {
+    setTotalcart("");
+    setCartarray([]);
+    setCount(0);
+    setProductarray([]);
+
 
   }
 
@@ -138,6 +147,7 @@ export default function Main() {
         {cartpopup === true ?
           <div className='cartpopupcontainer'>
             <button className='cartpopupbtn' onClick={closepopup}>X</button>
+            <button className='clearcartbtn' onClick={clearcart}>Clear Cart</button>
             <div className='totalcartprice'>Total Price: ${totalcart}</div>
             {cartpopup && showcartpopup()}
           </div>
