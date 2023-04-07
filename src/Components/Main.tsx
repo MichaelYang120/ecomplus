@@ -183,4 +183,3 @@ export default function Main() {
 }
 
 // todo add a functional arrow to auto scroll to top of page
-// todo add clear all items, can this be implemented by reseting the state to zero?

@@ -190,10 +190,12 @@
 
 }
 
+.cartpopupbtn:hover {
+  cursor: pointer;
+}
+
 .totalcartprice {
 position: fixed;
-/* width: 500px; */
-/* height: 200px; */
 padding: 5px;
 top: 25%;
 left: 68%;
@@ -201,4 +203,18 @@ border: #282c34 solid 1px;
 background-color: bisque;
 border-radius: 5px;
 
+}
+
+.clearcartbtn {
+  margin: 10px 0 10px 40px;
+  position: fixed;
+  float: right;
+  background-color: #282c34;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+
+.clearcartbtn:hover{
+  cursor: pointer;
 }
