@@ -148,7 +148,8 @@ export default function Main() {
           <div className='cartpopupcontainer'>
             <button className='cartpopupbtn' onClick={closepopup}>X</button>
             <button className='clearcartbtn' onClick={clearcart}>Clear Cart</button>
-            <div className='totalcartprice'>Total Price: ${totalcart}</div>
+            {totalcart === "" ? ""
+              : <div className='totalcartprice'>Total Price: ${totalcart}</div>}
             {cartpopup && showcartpopup()}
           </div>
           : ""}
