@@ -165,8 +165,8 @@ export default function Main() {
             <a className='headercheckouttext' href='/'>Checkout</a>
           </div>
         </div>
-        <div>
-          <button onClick={scrolltotop}>^</button>
+        <div className='scrolltotopcontainer'>
+          <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
         </div>
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
