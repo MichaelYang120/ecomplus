@@ -220,9 +220,8 @@ border-radius: 5px;
 }
 
 .scrolltotopcontainer {
-  position: fixed;
-  /* float: right; */
   display: block;
+  position: fixed;
   width: 100%;
   bottom: 9rem;
 }
@@ -230,9 +229,15 @@ border-radius: 5px;
 .scrolltotopbtn {
   background-color: #282c34;
   color: aliceblue;
-  font-weight: 700;
-  padding: 5px 7px 1px;
+  font-weight: 800;
+  font-size: 20px;
+  padding: 10px 10px 3px;
   border: none;
   float: right;
   margin-right: 30px;
+  border-radius: 8px;
+}
+
+.scrolltotopbtn:hover {
+  cursor: pointer;
 }

@@ -16,7 +16,8 @@ export default function Main() {
   const [productarray, setProductarray] = useState<PArray[]>([])
   const [cartarray, setCartarray] = useState<PArray[]>([])
   const [cartpopup, setCartpopup] = useState(false);
-  const [totalcart, setTotalcart] = useState("")
+  const [totalcart, setTotalcart] = useState("");
+  
 
 
   // click events
@@ -133,8 +134,9 @@ export default function Main() {
   }
 
   const scrolltotop = () => {
-    window.scrollTo(0, 0)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
 
   useEffect(() => {
     async function getproducts() {
@@ -165,9 +167,14 @@ export default function Main() {
             <a className='headercheckouttext' href='/'>Checkout</a>
           </div>
         </div>
+
+        { window.pageYOffset > 200 ? 
         <div className='scrolltotopcontainer'>
           <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
-        </div>
+        </div> : ""
+        }
+
+
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
             <div className='productinnercontainer'>
@@ -188,5 +195,3 @@ export default function Main() {
     </>
   )
 }
-
-// todo add a functional arrow to auto scroll to top of page
