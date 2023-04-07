@@ -116,7 +116,6 @@ export default function Main() {
     setCount(0);
     setProductarray([]);
 
-
   }
 
   function showcartpopup() {
@@ -131,6 +130,10 @@ export default function Main() {
         </div>
       )
     )
+  }
+
+  const scrolltotop = () => {
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {
@@ -161,6 +164,9 @@ export default function Main() {
           <div className='headercheckout'>
             <a className='headercheckouttext' href='/'>Checkout</a>
           </div>
+        </div>
+        <div>
+          <button onClick={scrolltotop}>^</button>
         </div>
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
