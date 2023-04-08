@@ -134,8 +134,9 @@ export default function Main() {
   }
 
   function showupbtn () {
+    const pagelocation = window.pageYOffset; 
     return (
-        window.pageYOffset > 200 ?
+        pagelocation > 200 ?
           <div className='scrolltotopcontainer'>
             <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
           </div> : ""
@@ -153,7 +154,7 @@ export default function Main() {
       setProducts(product)
     }
     getproducts()
-  }, [])
+  }, [scrolltotop])
 
   return (
     <>
