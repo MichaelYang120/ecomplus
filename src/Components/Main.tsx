@@ -133,6 +133,15 @@ export default function Main() {
     )
   }
 
+  function showupbtn () {
+    return (
+        window.pageYOffset > 200 ?
+          <div className='scrolltotopcontainer'>
+            <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
+          </div> : ""
+    )
+  }
+
   const scrolltotop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -168,12 +177,7 @@ export default function Main() {
           </div>
         </div>
 
-        { window.pageYOffset > 200 ? 
-        <div className='scrolltotopcontainer'>
-          <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
-        </div> : ""
-        }
-
+        {showupbtn()}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
