@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
+import { showupbtn } from '../Functions/Functions';
+
 
 export default function Main() {
   // debug
@@ -22,13 +24,13 @@ export default function Main() {
 
   // click events
   const buyhandler = (event: any) => {
-    // var targetname = event.target.title;
-    // var targetprice = event.target.value;
-    // var targetimgurl = event.target.getAttribute("data-img");
+    var targetname = event.target.title;
+    var targetprice = event.target.value;
+    var targetimgurl = event.target.getAttribute("data-img");
     if (debug === true) {
-      // console.log(event + "event")
-      // console.log(targetimgurl + "dataimg")
-      // console.log(targetname + " $" + targetprice)
+      console.log(event + "event")
+      console.log(targetimgurl + "dataimg")
+      console.log(targetname + " $" + targetprice)
       // console.log(totalcartvalue() + "total")
       // console.log(totalcart)
       // console.log(typeof(totalcart))
@@ -133,15 +135,15 @@ export default function Main() {
     )
   }
 
-  function showupbtn () {
-    const pagelocation = window.pageYOffset; 
-    return (
-        pagelocation > 200 ?
-          <div className='scrolltotopcontainer'>
-            <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
-          </div> : ""
-    )
-  }
+  // function showupbtn () {
+  //   const pagelocation = window.pageYOffset; 
+  //   return (
+  //       pagelocation > 200 ?
+  //         <div className='scrolltotopcontainer'>
+  //           <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
+  //         </div> : ""
+  //   )
+  // }
 
   const scrolltotop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -178,7 +180,7 @@ export default function Main() {
           </div>
         </div>
 
-        {showupbtn()}
+        {showupbtn(scrolltotop)}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
