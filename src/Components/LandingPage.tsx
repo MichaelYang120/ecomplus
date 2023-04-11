@@ -5,11 +5,25 @@ import { Productget } from '../Api/Apirequest';
 export default function LandingPage() {
 
     const [products, setProducts] = useState([])
+    const [randomimage, setRandomimage] = useState('')
 
+    // var newproduct = products[Math.floor(Math.random() * products.length)];
+    // setRandomproduct(newproduct)
+    // console.log(newproduct)
+    
+    interface PArray {
+        name: string,
+        price: string,
+        image: string
+    }
+    
     function featuredimg() {
+        const random: PArray = products[Math.floor(Math.random() * products.length)]
+        const newrandomimage = random.image
+        setRandomimage(newrandomimage)
         return (
             <>
-                {products.map(({ image }) => <img className='landingpageimg' src={image} alt='' />)}
+                <img className='landingpageimg' src={randomimage} alt=''/>
             </>
 
         )
@@ -31,6 +45,7 @@ export default function LandingPage() {
                     <h1>Heading goes here</h1>
                     <p>descriptive text</p>
                     <button>to main cart page</button>
+                    
                 </div>
             </div>
         </>
