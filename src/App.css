@@ -241,3 +241,11 @@ border-radius: 5px;
 .scrolltotopbtn:hover {
   cursor: pointer;
 }
+
+.landingpagecontainer {
+  height: 100vh;
+}
+
+.landingpageimg {
+  height: 100px;
+}
