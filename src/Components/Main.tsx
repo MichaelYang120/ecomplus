@@ -19,8 +19,6 @@ export default function Main() {
   const [cartarray, setCartarray] = useState<PArray[]>([])
   const [cartpopup, setCartpopup] = useState(false);
   const [totalcart, setTotalcart] = useState("");
-  
-
 
   // click events
   const buyhandler = (event: any) => {
@@ -52,7 +50,7 @@ export default function Main() {
       console.log("event" + event.target)
       console.log(`event ${event}`)
     }
-    var newproductarray: any = {
+    var newproductarray: PArray = {
       "name": targetname,
       "price": targetprice,
       "image": targetimgurl
@@ -134,16 +132,6 @@ export default function Main() {
       )
     )
   }
-
-  // function showupbtn () {
-  //   const pagelocation = window.pageYOffset; 
-  //   return (
-  //       pagelocation > 200 ?
-  //         <div className='scrolltotopcontainer'>
-  //           <button className='scrolltotopbtn' onClick={scrolltotop}>^</button>
-  //         </div> : ""
-  //   )
-  // }
 
   const scrolltotop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
