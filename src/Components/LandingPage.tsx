@@ -5,7 +5,7 @@ import { Productget } from '../Api/Apirequest';
 export default function LandingPage() {
 
     const [products, setProducts] = useState([])
-    const [randomimage, setRandomimage] = useState('')
+    const [randomimage, setRandomimage] = useState("")
 
     // var newproduct = products[Math.floor(Math.random() * products.length)];
     // setRandomproduct(newproduct)
@@ -16,26 +16,35 @@ export default function LandingPage() {
         price: string,
         image: string
     }
-    
-    function featuredimg() {
-        const random: PArray = products[Math.floor(Math.random() * products.length)]
-        const newrandomimage = random.image
-        setRandomimage(newrandomimage)
-        return (
-            <>
-                <img className='landingpageimg' src={randomimage} alt=''/>
-            </>
 
-        )
-    }
+    // function setRandomproduct() {
+    //     let random: PArray = products[Math.floor(Math.random() * products.length)]
+    //     let newrandomimage = random?.image;
+    //     setRandomimage(newrandomimage)
+
+    // }
 
     useEffect(() => {
         async function getproducts() {
             var product = await Productget();
-            setProducts(product)
+            setProducts(product);
+
+            let random:any = products[Math.floor(Math.random() * products.length)];
+            setRandomimage(random.image);
         }
-        getproducts()
-    }, [])
+        getproducts();
+        // setRandomproduct()
+        console.log(randomimage)
+    },[])
+    
+    function featuredimg() {
+        console.log("hit")
+        // setRandomproduct()
+        console.log(randomimage)
+        return (
+            <img className='landingpageimg' src={randomimage} alt='' />
+        )
+    }
 
     return (
         <>
@@ -45,7 +54,6 @@ export default function LandingPage() {
                     <h1>Heading goes here</h1>
                     <p>descriptive text</p>
                     <button>to main cart page</button>
-                    
                 </div>
             </div>
         </>
