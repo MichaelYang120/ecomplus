@@ -19,6 +19,7 @@ export default function Main() {
   const [productarray, setProductarray] = useState<PArray[]>([])
   const [cartarray, setCartarray] = useState<PArray[]>([])
   const [cartpopup, setCartpopup] = useState(false);
+  const [sortaccendstat, setSortaccendstat] = useState(false);
   const [totalcart, setTotalcart] = useState("");
 
   // click events
@@ -162,15 +163,19 @@ export default function Main() {
   const sortbyprice = () => {
     // setProducts(products)
     console.log("clicked")
+    setSortaccendstat(true)
+
     bubbleSort(products, 'price')
     for (let i = 0; i < products.length; i++) {
       // console.log(products[i]);
-      // let newlist = products[i]
+      let newlist = products[i]
       setProductsPriceAccend(products[i])
       // console.log(typeof(products) + "products")
       // console.log((products) + "products")
       // console.log(typeof(productsPriceAccend) + "new products")
-      setProducts((products) => [...products])
+
+      setProducts((productsPriceAccend) => [...productsPriceAccend])
+      // setProducts(productsPriceAccend)
     }
   }
 
@@ -186,10 +191,17 @@ export default function Main() {
       var product = await Productget();
       setProducts(product)
     }
-    getproducts()
-    // sortbyprice()
+    // if statements are added to prevent rerendering
+    if (sortaccendstat === false) {
+      getproducts()
+
+    }
+    if (sortaccendstat === true) {
+      sortbyprice()
+
+    }
   
-  }, [scrolltotop])
+  }, [scrolltotop, sortbyprice])
 
 
 
@@ -217,7 +229,7 @@ export default function Main() {
         </div>
 
         {showupbtn(scrolltotop)}
-          {showsortbyprice(sortbyprice)}
+        {showsortbyprice(sortbyprice)}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
