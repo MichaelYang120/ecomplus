@@ -14,6 +14,7 @@ export default function Main() {
   }
 
   const [products, setProducts] = useState([]);
+  const [productsPriceAccend, setProductsPriceAccend] = useState([]);
   const [count, setCount] = useState(0);
   const [productarray, setProductarray] = useState<PArray[]>([])
   const [cartarray, setCartarray] = useState<PArray[]>([])
@@ -137,17 +138,35 @@ export default function Main() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  const sortbyprice = () => {
-    console.log("clicked")
-    for(let i = 0; i < products.length; i++) {
-      for(let j = 0; j < products.length - i - 1; j++) {
-        if(products[j+1] < products[j]) {
-          [products[j+1], products[j]] = [products[j],products[j+1]]
+  // this is to sort the array
+  function bubbleSort(a:any, par:any) {
+    var swapped;
+    do {
+      swapped = false;
+      for (var i = 0; i < a.length - 1; i++) {
+        if (a[i][par] > a[i + 1][par]) {
+          var temp = a[i];
+          a[i] = a[i + 1];
+          a[i + 1] = temp;
+          swapped = true;
         }
       }
-    };
-    console.log("clicked2")
-    return products
+    } while (swapped);
+  }
+
+ 
+
+  const sortbyprice = () => {
+    // setProducts(products)
+    console.log("clicked")
+    bubbleSort(products, 'price')
+    var newarrayset = ""
+    for (let i = 0; i < products.length; i++) {
+      console.log(products[i]);
+      let newlist = products[i]
+      setProductsPriceAccend(products[i])
+      setProducts(productsPriceAccend)
+    }
   }
 
   function showsortbyprice () {
@@ -162,6 +181,7 @@ export default function Main() {
       setProducts(product)
     }
     getproducts()
+    sortbyprice()
   }, [scrolltotop])
 
 
