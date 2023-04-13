@@ -137,6 +137,24 @@ export default function Main() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  const sortbyprice = () => {
+    console.log("clicked")
+    for(let i = 0; i < products.length; i++) {
+      for(let j = 0; j < products.length - i - 1; j++) {
+        if(products[j+1] < products[j]) {
+          [products[j+1], products[j]] = [products[j],products[j+1]]
+        }
+      }
+    };
+    console.log("clicked2")
+    return products
+  }
+
+  function showsortbyprice () {
+    return (
+      <button onClick={sortbyprice} >sort by price</button>
+    )
+  }
 
   useEffect(() => {
     async function getproducts() {
@@ -145,6 +163,8 @@ export default function Main() {
     }
     getproducts()
   }, [scrolltotop])
+
+
 
   return (
     <>
@@ -159,6 +179,7 @@ export default function Main() {
           </div>
           : ""}
 
+
         <div className="cartcontainer">
           <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}
 
@@ -169,6 +190,7 @@ export default function Main() {
         </div>
 
         {showupbtn(scrolltotop)}
+          {showsortbyprice()}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
