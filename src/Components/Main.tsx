@@ -41,7 +41,7 @@ export default function Main() {
   function incrementcart() {
     setCount(count + 1)
   }
-
+  // add to cart click function
   const addtocarthandler = (event: any) => {
     var targetname = event.target.title;
     var targetprice = event.target.value;
@@ -60,6 +60,7 @@ export default function Main() {
 
       console.log(newproductarray)
     }
+    // this is where we append to the array
     var tmparray = newproductarray;
     setProductarray(productarray => [...productarray, ...[newproductarray]])
     if (debug === true) {
@@ -97,6 +98,7 @@ export default function Main() {
       // console.log("cart btn: " + productarray)
       console.log(cartarray)
     }
+    // this error is for no products in the cart, then it will display a message
     if (cartarray.length === 0) {
       alert("please make a selection")
     } else {
@@ -107,6 +109,7 @@ export default function Main() {
     }
   }
 
+  // this is where we set the state for cart popup status
   const closepopup = () => {
     setCartpopup(false);
 
@@ -119,7 +122,8 @@ export default function Main() {
     setProductarray([]);
 
   }
-
+  
+  // this is where we show the cart popup
   function showcartpopup() {
     return (
       cartarray.map(({ name, price, image }) =>
@@ -134,6 +138,7 @@ export default function Main() {
     )
   }
 
+  // this is scroll to top function
   const scrolltotop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -153,9 +158,7 @@ export default function Main() {
       }
     } while (swapped);
   }
-
- 
-
+  // this is the click function to sort by accending prices and then reseting the array to rerender the new data set
   const sortbyprice = () => {
     // setProducts(products)
     console.log("clicked")
@@ -171,8 +174,7 @@ export default function Main() {
     }
   }
 
-  
-
+  // this is how we show the sort by price btn // todo: if there are multiple sort methods maybe consider a dropdown option rather then a button
   function showsortbyprice (sortbyprice:any) {
     return (
       <button onClick={sortbyprice} >sort by price</button>
@@ -239,3 +241,4 @@ export default function Main() {
 }
 
 // todo: sort array, or filter items
+// todo: consider adding filter to my cart
