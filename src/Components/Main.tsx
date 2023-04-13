@@ -160,16 +160,20 @@ export default function Main() {
     // setProducts(products)
     console.log("clicked")
     bubbleSort(products, 'price')
-    var newarrayset = ""
     for (let i = 0; i < products.length; i++) {
-      console.log(products[i]);
-      let newlist = products[i]
+      // console.log(products[i]);
+      // let newlist = products[i]
       setProductsPriceAccend(products[i])
-      setProducts(productsPriceAccend)
+      // console.log(typeof(products) + "products")
+      // console.log((products) + "products")
+      // console.log(typeof(productsPriceAccend) + "new products")
+      setProducts((products) => [...products])
     }
   }
 
-  function showsortbyprice () {
+  
+
+  function showsortbyprice (sortbyprice:any) {
     return (
       <button onClick={sortbyprice} >sort by price</button>
     )
@@ -181,7 +185,8 @@ export default function Main() {
       setProducts(product)
     }
     getproducts()
-    sortbyprice()
+    // sortbyprice()
+  
   }, [scrolltotop])
 
 
@@ -210,7 +215,7 @@ export default function Main() {
         </div>
 
         {showupbtn(scrolltotop)}
-          {showsortbyprice()}
+          {showsortbyprice(sortbyprice)}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
