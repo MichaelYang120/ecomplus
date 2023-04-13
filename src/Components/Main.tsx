@@ -167,15 +167,16 @@ export default function Main() {
 
     bubbleSort(products, 'price')
     for (let i = 0; i < products.length; i++) {
-      // console.log(products[i]);
-      let newlist = products[i]
       setProductsPriceAccend(products[i])
-      // console.log(typeof(products) + "products")
-      // console.log((products) + "products")
-      // console.log(typeof(productsPriceAccend) + "new products")
+      if (debug === true) {
+        // console.log(products[i]);
+        // console.log(typeof(products) + "products")
+        // console.log((products) + "products")
+        // console.log(typeof(productsPriceAccend) + "new products")
+
+      }
 
       setProducts((productsPriceAccend) => [...productsPriceAccend])
-      // setProducts(productsPriceAccend)
     }
   }
 
