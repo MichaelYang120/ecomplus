@@ -275,7 +275,7 @@ export default function Main() {
                 <button className='shopbtn' onClick={addtocarthandler} title={title} value={price} data-img={image}>Add To Cart</button>
               </div>
             </div>
-            <img className='productimage' src={image} alt="" />
+            <img className='productimage' src={image} alt="prodcutimg" />
           </div>
         )}
       </div>
