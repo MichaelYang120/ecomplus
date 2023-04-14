@@ -249,3 +249,7 @@ border-radius: 5px;
 .landingpageimg {
   height: 100px;
 }
+
+.headercheckouttext:hover {
+  cursor: pointer;
+}

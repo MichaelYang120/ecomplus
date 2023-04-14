@@ -20,6 +20,8 @@ export default function Main() {
   const [cartarray, setCartarray] = useState<PArray[]>([])
   const [cartpopup, setCartpopup] = useState(false);
   const [sortaccendstat, setSortaccendstat] = useState(false);
+  const [pricecolorstatus, setpricecolorstatus] = useState(false);
+  const [defaultcolorstatus, setdefualtcolorstatus] = useState(false);
   const [totalcart, setTotalcart] = useState("");
 
   // click events
@@ -162,8 +164,18 @@ export default function Main() {
   // this is the click function to sort by accending prices and then reseting the array to rerender the new data set
   const sortbyprice = () => {
     // setProducts(products)
-    console.log("clicked")
+    if(debug === true) {
+      console.log("clicked")
+
+    }
     setSortaccendstat(true)
+    if(defaultcolorstatus === true) {
+      setpricecolorstatus(true)
+      setdefualtcolorstatus(false)
+
+    } else {
+      setpricecolorstatus(true)
+    }
 
     bubbleSort(products, 'price')
     for (let i = 0; i < products.length; i++) {
@@ -188,6 +200,14 @@ export default function Main() {
     if(sortaccendstat === true) {
       setSortaccendstat(false)
       setProducts(products)
+      if(pricecolorstatus === true) {
+        setdefualtcolorstatus(true)
+        setpricecolorstatus(false)
+
+      } else (
+        setdefualtcolorstatus(true)
+ 
+      )
       
     }
   }
@@ -196,8 +216,8 @@ export default function Main() {
   function sortproducts () {
     return (
       <div className='headercheckout'>
-        <a className='headercheckouttext' onClick={sortbyprice} >sort by price</a>
-        <a className='headercheckouttext' onClick={defaultsort} >default</a>
+        <a className='headercheckouttext' style={{ color: pricecolorstatus === true ? "#0e73cb" : "aliceblue" }} onClick={sortbyprice} >Sort By Price</a>
+        <a className='headercheckouttext' style={{ color: defaultcolorstatus === true ? "#0e73cb" : "aliceblue" }} onClick={defaultsort} >Default</a>
       </div>
     )
   }
@@ -265,3 +285,4 @@ export default function Main() {
 
 // todo: sort array, or filter items
 // todo: consider adding filter to my cart
+// todo: fix/abstract color change for sort method, it should be in a function
