@@ -181,11 +181,13 @@ export default function Main() {
   }
 
   const defaultsort = () => {
-    console.log(sortaccendstat)
+    if(debug === true) {
+      console.log(sortaccendstat)
+
+    }
     if(sortaccendstat === true) {
       setSortaccendstat(false)
-
-      // setProducts(products)
+      setProducts(products)
       
     }
   }
@@ -193,10 +195,10 @@ export default function Main() {
   // this is how we show the sort by price btn // todo: if there are multiple sort methods maybe consider a dropdown option rather then a button
   function sortproducts () {
     return (
-      <>
-        <button onClick={sortbyprice} >sort by price</button>
-        <button onClick={defaultsort} >default</button>
-      </>
+      <div className='headercheckout'>
+        <a className='headercheckouttext' onClick={sortbyprice} >sort by price</a>
+        <a className='headercheckouttext' onClick={defaultsort} >default</a>
+      </div>
     )
   }
 
@@ -231,16 +233,14 @@ export default function Main() {
 
 
         <div className="cartcontainer">
-          <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}
-
-          </div>
+          {sortproducts()}
+          <div className='cart' onClick={headercarthandler}>{count > 0 ? "Number of Items In My Cart: " + count : "Cart Is Empty"}</div>
           <div className='headercheckout'>
             <a className='headercheckouttext' href='/'>Checkout</a>
           </div>
         </div>
 
         {showupbtn(scrolltotop)}
-        {sortproducts()}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
