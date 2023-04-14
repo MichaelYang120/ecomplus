@@ -180,10 +180,23 @@ export default function Main() {
     }
   }
 
+  const defaultsort = () => {
+    console.log(sortaccendstat)
+    if(sortaccendstat === true) {
+      setSortaccendstat(false)
+
+      // setProducts(products)
+      
+    }
+  }
+
   // this is how we show the sort by price btn // todo: if there are multiple sort methods maybe consider a dropdown option rather then a button
-  function showsortbyprice (sortbyprice:any) {
+  function sortproducts () {
     return (
-      <button onClick={sortbyprice} >sort by price</button>
+      <>
+        <button onClick={sortbyprice} >sort by price</button>
+        <button onClick={defaultsort} >default</button>
+      </>
     )
   }
 
@@ -195,10 +208,7 @@ export default function Main() {
     // if statements are added to prevent rerendering
     if (sortaccendstat === false) {
       getproducts()
-
-    }
-    if (sortaccendstat === true) {
-      sortbyprice()
+      setSortaccendstat(true)
 
     }
   
@@ -230,7 +240,7 @@ export default function Main() {
         </div>
 
         {showupbtn(scrolltotop)}
-        {showsortbyprice(sortbyprice)}
+        {sortproducts()}
 
         {products.map(({ id, title, description, image, price }) =>
           <div className="productcontainer" key={id}>
