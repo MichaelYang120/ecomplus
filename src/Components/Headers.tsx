@@ -11,7 +11,6 @@ export default class Headers extends Component {
               My Ecom Plus
 
             </h1>
-            {/* todo: search field */}
           </div>
           <div>Icons</div>
         </div>
