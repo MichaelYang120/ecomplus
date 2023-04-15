@@ -106,7 +106,11 @@ export default function Main() {
       alert("please make a selection")
     } else {
       var mycart: any = { "mycart": cartarray };
-      console.log(mycart)
+      setCartarray(cartarray)
+      if(debug === true) {
+        console.log(mycart)
+
+      }
       setCartpopup(true);
     
     }
