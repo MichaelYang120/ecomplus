@@ -5,7 +5,8 @@ import { showupbtn } from '../Functions/Functions';
 
 export default function Main() {
   // debug
-  var debug = true;
+  // var debug = true;
+  var debug = false;
 
   interface PArray {
     name: string,
