@@ -9,3 +9,20 @@ export function showupbtn(scrolltotop:ReactEventHandler) {
             </div> : ""
     )
 }
+
+
+// this is to sort the array
+export function bubbleSort(a: any, par: any) {
+    var swapped;
+    do {
+        swapped = false;
+        for (var i = 0; i < a.length - 1; i++) {
+            if (a[i][par] > a[i + 1][par]) {
+                var temp = a[i];
+                a[i] = a[i + 1];
+                a[i + 1] = temp;
+                swapped = true;
+            }
+        }
+    } while (swapped);
+}

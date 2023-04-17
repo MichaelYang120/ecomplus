@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
-import { showupbtn } from '../Functions/Functions';
+import { showupbtn, bubbleSort } from '../Functions/Functions';
 
 
 export default function Main() {
@@ -151,21 +151,6 @@ export default function Main() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // this is to sort the array
-  function bubbleSort(a:any, par:any) {
-    var swapped;
-    do {
-      swapped = false;
-      for (var i = 0; i < a.length - 1; i++) {
-        if (a[i][par] > a[i + 1][par]) {
-          var temp = a[i];
-          a[i] = a[i + 1];
-          a[i + 1] = temp;
-          swapped = true;
-        }
-      }
-    } while (swapped);
-  }
   // this is the click function to sort by accending prices and then reseting the array to rerender the new data set
   const sortbyprice = () => {
     // setProducts(products)
