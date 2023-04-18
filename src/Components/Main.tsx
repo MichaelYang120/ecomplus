@@ -36,7 +36,7 @@ export default function Main() {
       console.log(targetname + " $" + targetprice)
       // console.log(totalcartvalue() + "total")
       // console.log(totalcart)
-      // console.log(typeof(totalcart))
+
 
     }
 
@@ -99,7 +99,6 @@ export default function Main() {
 
   const headercarthandler = (event: any) => {
     if (debug === true) {
-      // console.log("cart btn: " + productarray)
       console.log(cartarray)
     }
     // this error is for no products in the cart, then it will display a message
@@ -153,7 +152,6 @@ export default function Main() {
 
   // this is the click function to sort by accending prices and then reseting the array to rerender the new data set
   const sortbyprice = () => {
-    // setProducts(products)
     if(debug === true) {
       console.log("clicked")
 
@@ -174,8 +172,6 @@ export default function Main() {
         // console.log(products[i]);
         // console.log(typeof(products) + "products")
         // console.log((products) + "products")
-        // console.log(typeof(productsPriceAccend) + "new products")
-
       }
 
       setProducts((productsPriceAccend) => [...productsPriceAccend])
