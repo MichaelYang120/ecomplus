@@ -55,12 +55,10 @@ export default function SignUp() {
 		marginBottom: "10px"
 	}
 
-	// if()
-
 
 	return (
 		<>
-			<div onClick={signupclick}>SignUp</div>
+			<div onClick={signupclick}>Subscribe to Our Newsletter</div>
 			<form onSubmit={submitform} style={signupformstyle} id='signupform'>
 				<span onClick={closeclick}>X</span>
 				<h1>Sign Up for our monthly newsletter</h1>
