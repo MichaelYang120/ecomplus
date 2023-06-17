@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 
 
@@ -10,12 +10,6 @@ export default function LandingPage() {
     // var newproduct = products[Math.floor(Math.random() * products.length)];
     // setRandomproduct(newproduct)
     // console.log(newproduct)
-    
-    interface PArray {
-        name: string,
-        price: string,
-        image: string
-    }
 
     // function setRandomproduct() {
     //     let random: PArray = products[Math.floor(Math.random() * products.length)]

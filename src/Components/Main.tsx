@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Productget } from '../Api/Apirequest';
 import { showupbtn, bubbleSort } from '../Functions/Functions';
+import SignUp from './SignUp';
 
 
 export default function Main() {
@@ -36,8 +37,6 @@ export default function Main() {
       console.log(targetname + " $" + targetprice)
       // console.log(totalcartvalue() + "total")
       // console.log(totalcart)
-
-
     }
 
   }
@@ -265,6 +264,7 @@ export default function Main() {
           </div>
         )}
       </div>
+      <SignUp/>
     </>
   )
 }
