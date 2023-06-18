@@ -214,3 +214,7 @@ border-radius: 5px;
 .headercheckouttext:hover {
   cursor: pointer;
 }
+
+.hovermouse:hover{
+  cursor: pointer;
+}

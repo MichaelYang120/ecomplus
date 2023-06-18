@@ -9,7 +9,6 @@ export default function SignUp() {
 			const formStyle = form.style;
 			formStyle.display = "block";
 		}
-
 	}
 
 	const submitform = (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,12 +54,17 @@ export default function SignUp() {
 		marginBottom: "10px"
 	}
 
+	const linkstyle = {
+		color:"white",
+		fontWeight: "600"
+	}
+
 
 	return (
 		<>
-			<div onClick={signupclick}>Subscribe to Our Newsletter</div>
+			<a className='hovermouse' style={linkstyle} onClick={signupclick}>Subscribe To Our Newsletter</a>
 			<form onSubmit={submitform} style={signupformstyle} id='signupform'>
-				<span onClick={closeclick}>X</span>
+				<span className='hovermouse' onClick={closeclick}>X</span>
 				<h1>Sign Up for our monthly newsletter</h1>
 				<p>Signing up for a monthly newsletter is a great way to stay connected with a brand, business or organization. By subscribing to a newsletter, you will receive regular updates and news about their products, services, events and promotions. This helps you to stay informed and up to date with the latest developments, and also provides you with valuable insights and information that may benefit you in some way. Additionally, newsletters often contain exclusive content, such as special offers, discounts and giveaways, which are only available to subscribers. Overall, by signing up for a monthly newsletter, you can deepen your relationship with a brand or organization and stay in the loop about their latest news and offerings.</p>
 				<div style={maincontainer}>
@@ -68,8 +72,8 @@ export default function SignUp() {
 					<span style={defaultvalue}>Last Name</span><input type='text'/>
 					<span style={defaultvalue}>Email</span><input type='text'/>
 				</div>
-				<p><input type='checkbox'/>By submitting your email address, you are agreeing to receive monthly newsletters from us via email. Our newsletters will contain updates about our products, services, events, and promotions, as well as exclusive content that is only available to our subscribers. You can unsubscribe from our newsletter at any time by clicking on the unsubscribe link provided in each email. Please note that we will not share or sell your email address to any third party. Your email address will only be used by us to send you our newsletter.</p>
-				<input type='submit'/>
+				<p><input className='hovermouse' type='checkbox'/>By submitting your email address, you are agreeing to receive monthly newsletters from us via email. Our newsletters will contain updates about our products, services, events, and promotions, as well as exclusive content that is only available to our subscribers. You can unsubscribe from our newsletter at any time by clicking on the unsubscribe link provided in each email. Please note that we will not share or sell your email address to any third party. Your email address will only be used by us to send you our newsletter.</p>
+				<input className='hovermouse' type='submit'/>
 			</form>
 		</>
 	)
