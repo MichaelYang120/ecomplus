@@ -40,6 +40,7 @@ export default function SignUp() {
 		top: "6rem",
 		background: "whitesmoke",
 		padding: "20px 30px",
+		borderRadius: "15px",
 
 	}
 
@@ -65,7 +66,7 @@ export default function SignUp() {
 			<a className='hovermouse' style={linkstyle} onClick={signupclick}>Subscribe To Our Newsletter</a>
 			<form onSubmit={submitform} style={signupformstyle} id='signupform'>
 				<span className='hovermouse' onClick={closeclick}>X</span>
-				<h1>Sign Up for our monthly newsletter</h1>
+				<h1 style={{borderBottom:"1px solid"}}>Sign Up for our monthly newsletter</h1>
 				<p>Signing up for a monthly newsletter is a great way to stay connected with a brand, business or organization. By subscribing to a newsletter, you will receive regular updates and news about their products, services, events and promotions. This helps you to stay informed and up to date with the latest developments, and also provides you with valuable insights and information that may benefit you in some way. Additionally, newsletters often contain exclusive content, such as special offers, discounts and giveaways, which are only available to subscribers. Overall, by signing up for a monthly newsletter, you can deepen your relationship with a brand or organization and stay in the loop about their latest news and offerings.</p>
 				<div style={maincontainer}>
 					<span style={defaultvalue}>First Name</span><input type='text'/>
